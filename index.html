@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Train Schedule</title>
+    <!-- Materialize -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel='stylesheet' href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <script src='https://code.jquery.com/jquery.js'></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='row'>
+            <div class='card-panel red darken-1 white-text'>
+                <h2 class='center-align'>Train Schedule</h2>
+            </div>
+        </div>
+        <div class='row'>
+            <!-- Display Panel -->
+            <div class='card-panel trainInfoClass'>
+                <h4 class='center-align'>Current Train Schedule</h4>
+                <table class="table striped center bordered responsive-table" id='trainInformation'>
+                    <thead>
+                        <tr>
+                            <th>Train Name</th>
+                            <th>Destination</th>
+                            <th>Frequency (minutes)</th>
+                            <th>Next Arrival</th>
+                            <th>Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Info Submission Panel -->
+        <div class='row'>
+            <div class='card-panel'>
+                <h4 class='center-align'>Add Your Train</h4>
+                <form>
+                    <div class="input-field">
+                        <input type="text" class="trainDetails" id="trainName">
+                        <label>Train Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" class="trainDetails" id="destination">
+                        <label>Destination</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="time" class="trainDetails" id="firstTime">
+                        <label class='active'>First Train (HH:mm Military Time)</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="number" class="trainDetails" id="frequency">
+                        <label>Frequency (minutes)</label>
+                    </div>
+                    <button type="submit" class="btn red darken-1" id="trainBtn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='assets/javascript/train.js'></script>
+</body>
+
+</html>
