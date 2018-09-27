@@ -1,31 +1,31 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Train Schedule</title>
-    <!-- Materialize -->
+    <!-- CSS, Google Fonts, Materialize -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel='stylesheet' href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
     <script src='https://code.jquery.com/jquery.js'></script>
-    <!-- Compiled and minified JavaScript -->
+    <!-- Moment, Materialize, Firebase -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+    
 </head>
 
 <body>
     <div class='container'>
         <div class='row'>
+            <!-- Header Title Panel -->
             <div class='card-panel red darken-1 white-text'>
                 <h2 class='center-align'>Train Schedule</h2>
             </div>
         </div>
         <div class='row'>
-            <!-- Display Panel -->
+            <!-- Display Previous Train Information Panel -->
             <div class='card-panel trainInfoClass'>
                 <h4 class='center-align'>Current Train Schedule</h4>
                 <table class="table striped center bordered responsive-table" id='trainInformation'>
@@ -38,12 +38,12 @@
                             <th>Minutes Away</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="previousSubmissions">
                     </tbody>
                 </table>
             </div>
         </div>
-        <!-- Info Submission Panel -->
+        <!-- Enter Train Information Panel -->
         <div class='row'>
             <div class='card-panel'>
                 <h4 class='center-align'>Add Your Train</h4>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="input-field">
                         <input type="time" class="trainDetails" id="firstTime">
-                        <label class='active'>First Train (HH:mm Military Time)</label>
+                        <label>First Trains</label>
                     </div>
                     <div class="input-field">
                         <input type="number" class="trainDetails" id="frequency">
@@ -69,6 +69,7 @@
             </div>
         </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
     <script type='text/javascript' src='assets/javascript/train.js'></script>
 </body>
 
