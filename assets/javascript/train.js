@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+// create varaibles
 var currentTime = moment();
 var ConvertedCurrentTime = moment().format('LT');
 var nextTrain;
@@ -20,11 +21,12 @@ var submitDestination;
 var submitFirstTime;
 var submitFrequency;
 
-
+// Get the times based off of Current Time and Submitted Time
 function getTimes() {
   var convertCurrentTime = moment(ConvertedCurrentTime, 'HH:mm').format('hh:mm a');
   var convertSubmittedTime = moment(submitFirstTime, 'HH:mm').format('hh:mm a');
 
+  // Run this, if the submitted time is set in the past
   if (convertCurrentTime > convertSubmittedTime) {
     var convertTime = moment(submitFirstTime, "hh:mm").subtract("1, years");
     var difference = currentTime.diff(moment(convertTime), "minutes");
@@ -33,8 +35,7 @@ function getTimes() {
     nextTrain = moment().add(minUntilTrain, "minutes").format("hh:mm a");
     mintuesUntilTrain = parseInt(minUntilTrain);
 
-    console.log(nextTrain);
-    console.log(mintuesUntilTrain);
+// Run this if the Submitted time is in the future
   } else {
     var convertTime = moment(submitFirstTime, "hh:mm").subtract("1, years");
     var difference = convertTime.diff(moment(), "minutes");
@@ -46,7 +47,7 @@ function getTimes() {
 }
 
 
-
+// On Sumbit button, this will build in Firebase and update local variables
 $("#trainBtn").on("click", function (event) {
   event.preventDefault();
 
@@ -76,6 +77,7 @@ $("#trainBtn").on("click", function (event) {
 
 });
 
+// This funnction pull data from Firebase on add it to the Current Schedule table
 database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val().TrainName);
   console.log(childSnapshot.val().Destination);
